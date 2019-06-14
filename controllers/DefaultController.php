@@ -1,6 +1,8 @@
 <?php
 
 namespace artsoft\portfolio\controllers;
+
+use artsoft\controllers\admin\BaseController;
 use himiklab\sortablegrid\SortableGridAction;
 use Yii;
 
@@ -8,7 +10,7 @@ use Yii;
 /**
  * DefaultController implements the CRUD actions for artsoft\portfolio\models\Items model.
  */
-class DefaultController extends \backend\controllers\DefaultController
+class DefaultController extends BaseController
 {
     public $modelClass       = 'artsoft\portfolio\models\Items';
     public $modelSearchClass = 'artsoft\portfolio\models\search\ItemsSearch';

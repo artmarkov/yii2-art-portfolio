@@ -3,12 +3,12 @@
 namespace artsoft\portfolio\controllers;
 
 use Yii;
-use backend\controllers\DefaultController;
+use artsoft\controllers\admin\BaseController;
 
 /**
  * CategoryController implements the CRUD actions for artsoft\portfolio\models\Category model.
  */
-class CategoryController extends DefaultController 
+class CategoryController extends BaseController 
 {
     public $modelClass       = 'artsoft\portfolio\models\Category';
     public $modelSearchClass = 'artsoft\portfolio\models\search\CategorySearch';

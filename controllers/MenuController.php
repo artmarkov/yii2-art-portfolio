@@ -3,13 +3,13 @@
 namespace artsoft\portfolio\controllers;
 
 use Yii;
-use backend\controllers\DefaultController;
+use artsoft\controllers\admin\BaseController;
 use himiklab\sortablegrid\SortableGridAction;
 
 /**
  * MenuController implements the CRUD actions for artsoft\portfolio\models\Menu model.
  */
-class MenuController extends DefaultController 
+class MenuController extends BaseController 
 {
     public $modelClass       = 'artsoft\portfolio\models\Menu';
     public $modelSearchClass = 'artsoft\portfolio\models\search\MenuSearch';
