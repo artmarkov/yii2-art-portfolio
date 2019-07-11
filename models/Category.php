@@ -65,6 +65,7 @@ class Category extends ActiveRecord implements OwnerAccess
     {
         return [
             [['name', 'type', 'status'], 'required'],
+            ['slug', 'required', 'enableClientValidation' => false],
             [['name', 'slug'], 'unique'],
             [['type', 'status'], 'integer'],
             [['created_at', 'updated_at', 'created_by', 'updated_by'], 'safe'],

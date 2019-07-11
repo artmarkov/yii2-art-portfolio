@@ -45,7 +45,7 @@ use yii\web\JsExpression;
 EOF;
     ?>
     <div class="row">
-        <div class="col-md-9">
+        <div class="col-md-8">
             <div class="row">
                 <div class="panel panel-default">
                     <div class="panel-body">
@@ -67,11 +67,15 @@ EOF;
             </div>
         </div>
 
-        <div class="col-md-3">
+        <div class="col-md-4">
 
             <div class="panel panel-default">
                 <div class="panel-body">
                     <div class="record-info">
+                            <div class="form-group clearfix">
+                                <label class="control-label" style="float: left; padding-right: 5px;"><?= $model->attributeLabels()['id'] ?>: </label>
+                                <span><?= $model->id ?></span>
+                            </div>
                         <?php if (!$model->isNewRecord): ?>
 
                             <div class="form-group clearfix">
@@ -96,29 +100,12 @@ EOF;
                             </div>
                         <?php endif; ?>
                                               
-                        <?= $form->field($model, 'thumbnail')->widget(\artsoft\media\widgets\FileInput::className(), [
-                            'name' => 'image',
-                            'buttonTag' => 'button',
-                            'buttonName' => Yii::t('art', 'Browse'),
-                            'buttonOptions' => ['class' => 'btn btn-default btn-file-input'],
-                            'options' => ['class' => 'form-control'],
-                            'template' => '<div class="items-thumbnail thumbnail"></div><div class="input-group">{input}<span class="input-group-btn">{button}</span></div>',
-                            'thumb' => $this->context->module->thumbnailSize,
-                            'imageContainer' => '.items-thumbnail',
-                            'pasteData' => \artsoft\media\widgets\FileInput::DATA_URL,
-                            'callbackBeforeInsert' => new JsExpression($JSInsertLink), 
-                        ])
-                        ?>
 
                         <div class="form-group">
                             <?php if ($model->isNewRecord): ?>
                                 <?= Html::submitButton(Yii::t('art', 'Create'), ['class' => 'btn btn-primary']) ?>
                                 <?= Html::a(Yii::t('art', 'Cancel'), ['/portfolio/default/index'], ['class' => 'btn btn-default']) ?>
                             <?php else: ?>
-                                <div class="form-group clearfix">
-                                    <label class="control-label" style="float: left; padding-right: 5px;"><?= $model->attributeLabels()['id'] ?>: </label>
-                                    <span><?= $model->id ?></span>
-                                </div>
                                 <?= Html::submitButton(Yii::t('art', 'Save'), ['class' => 'btn btn-primary']) ?>
                                 <?=
                                 Html::a(Yii::t('art', 'Delete'), ['/portfolio/default/delete', 'id' => $model->id], [
@@ -134,7 +121,24 @@ EOF;
                     </div>
                 </div>
             </div>
-
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    
+                        <?= $form->field($model, 'thumbnail')->widget(\artsoft\media\widgets\FileInput::className(), [
+                            'name' => 'image',
+                            'buttonTag' => 'button',
+                            'buttonName' => Yii::t('art', 'Browse'),
+                            'buttonOptions' => ['class' => 'btn btn-default btn-file-input'],
+                            'options' => ['class' => 'form-control'],
+                            'template' => '<div class="items-thumbnail thumbnail"></div><div class="input-group">{input}<span class="input-group-btn">{button}</span></div>',
+                            'thumb' => $this->context->module->thumbnailSize,
+                            'imageContainer' => '.items-thumbnail',
+                            'pasteData' => \artsoft\media\widgets\FileInput::DATA_URL,
+                            'callbackBeforeInsert' => new JsExpression($JSInsertLink), 
+                        ])
+                        ?>
+                </div>
+            </div>
         </div>
     </div>
 

@@ -19,7 +19,7 @@ use artsoft\helpers\Html;
     ?>
 
     <div class="row">
-        <div class="col-md-9">
+        <div class="col-md-8">
 
             <div class="panel panel-default">
                 <div class="panel-body">
@@ -28,18 +28,25 @@ use artsoft\helpers\Html;
 
                     <?= $form->field($model, 'slug')->textInput(['maxlength' => true]) ?>
 
+                    <?= $form->field($model->loadDefaultValues(), 'status')->dropDownList(Category::getStatusList()) ?>
+                    
+                    <?= $form->field($model->loadDefaultValues(), 'type')->dropDownList(Category::getTypeList()) ?>
+                    
                     <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
-
                 </div>
 
             </div>
         </div>
 
-        <div class="col-md-3">
+        <div class="col-md-4">
 
             <div class="panel panel-default">
                 <div class="panel-body">
                     <div class="record-info">
+                            <div class="form-group clearfix">
+                                <label class="control-label" style="float: left; padding-right: 5px;"><?=  $model->attributeLabels()['id'] ?>: </label>
+                                <span><?=  $model->id ?></span>
+                            </div>
                     <?php if (!$model->isNewRecord): ?>
 
                             <div class="form-group clearfix">
@@ -63,17 +70,11 @@ use artsoft\helpers\Html;
                                     <span><?= $model->updatedBy->username ?></span>
                             </div>
                         <?php endif; ?>
-                        <?= $form->field($model->loadDefaultValues(), 'status')->dropDownList(Category::getStatusList()) ?>
-                        <?= $form->field($model->loadDefaultValues(), 'type')->dropDownList(Category::getTypeList()) ?>
                         <div class="form-group">
                             <?php  if ($model->isNewRecord): ?>
                                 <?= Html::submitButton(Yii::t('art', 'Create'), ['class' => 'btn btn-primary']) ?>
                                 <?= Html::a(Yii::t('art', 'Cancel'), ['/portfolio/category/index'], ['class' => 'btn btn-default']) ?>
                             <?php  else: ?>
-                                <div class="form-group clearfix">
-                                    <label class="control-label" style="float: left; padding-right: 5px;"><?=  $model->attributeLabels()['id'] ?>: </label>
-                                    <span><?=  $model->id ?></span>
-                                </div>
                                 <?= Html::submitButton(Yii::t('art', 'Save'), ['class' => 'btn btn-primary']) ?>
                                 <?= Html::a(Yii::t('art', 'Delete'),
                                     ['/portfolio/category/delete', 'id' => $model->id], [
