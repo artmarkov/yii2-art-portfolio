@@ -109,7 +109,7 @@ EOF;
                                 <?= Html::submitButton(Yii::t('art', 'Save'), ['class' => 'btn btn-primary']) ?>
                                 <?=
                                 Html::a(Yii::t('art', 'Delete'), ['/portfolio/default/delete', 'id' => $model->id], [
-                                    'class' => 'btn btn-default',
+                                    'class' => 'btn btn-danger',
                                     'data' => [
                                         'confirm' => Yii::t('yii', 'Are you sure you want to delete this item?'),
                                         'method' => 'post',
